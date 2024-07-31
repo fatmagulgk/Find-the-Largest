@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GearManager : MonoBehaviour
 {
-    public int speeed = 30;
+    public int speed = 30;
     void Update()
     {
-        transform.Rotate(transform.forward * speeed * Time.deltaTime);//Bu nesnenin rotasyonunu cevir.
+        transform.Rotate(transform.forward * speed * Time.deltaTime);//Bu nesnenin rotasyonunu cevir.
     }
 }
