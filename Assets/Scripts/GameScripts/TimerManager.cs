@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour
+public class TimerManager : Singeleton<TimerManager>
 {
-    [SerializeField] private Text DurationText;
+
+
+    public int timeRemaining ;
+    bool timerControl = true;
 
     void Start()
     {
-        
+        StartCoroutine(TimerRoutine());
     }
+    IEnumerator TimerRoutine()
+    {
+        while(timerControl&& CountdownManager.Instance.processFinishedControl)
+        {
+            yield return new WaitForSeconds(1f);
 
+            
+            if (timeRemaining <= 0)
+            {
+                timerControl = false;
+            }
+            timeRemaining --;
+        }
+    }
     
 }

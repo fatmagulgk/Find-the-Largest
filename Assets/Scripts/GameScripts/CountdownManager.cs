@@ -11,7 +11,7 @@ public class CountdownManager : Singeleton<CountdownManager>
     [SerializeField]private GameObject CountdownObject;
     [SerializeField]private Text CountdownText;
     int coundownStartNumber = 3;
-    bool processFinishedControl = false;
+    public bool processFinishedControl = false;
     Coroutine ietempCoroutine;
     private void Start()
     {
