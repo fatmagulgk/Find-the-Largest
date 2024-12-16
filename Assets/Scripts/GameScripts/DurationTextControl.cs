@@ -7,7 +7,7 @@ public class DurationTextControl : MonoBehaviour
 {
     [SerializeField] public int _time;
 
-    public Text Text;
+    private Text Text;
 
     private float WaitingTime = 1f;
     private float CurrentTime = 0f;
@@ -17,13 +17,17 @@ public class DurationTextControl : MonoBehaviour
     }
     private void Update()
     {
-        CurrentTime += Time.deltaTime;
-        if (CurrentTime >= WaitingTime)
+        if (CountdownManager.Instance.processFinishedControl)
         {
-            _time--;
-            Text.text = _time.ToString();
-            CurrentTime = 0f;
+            CurrentTime += Time.deltaTime;
+            if (CurrentTime >= WaitingTime)
+            {
+                _time--;
+                Text.text = _time.ToString();
+                CurrentTime = 0f;
+            }
         }
+        
     }
     //processcontrolden sonra çalýþacak ve geriye doðru sayacak
 

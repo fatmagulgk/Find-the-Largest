@@ -6,18 +6,26 @@ using UnityEngine.UI;
 public class TimerManager : Singeleton<TimerManager>
 {
 
-
-    public int timeRemaining ;
+    //bu script kullanýlmýyor ancak daha 
+    [SerializeField] int timeRemaining;
     bool timerControl = true;
-
+    [SerializeField]private Text countdownText;
+    
     void Start()
     {
+
+        if (countdownText == null)
+        {
+            Debug.LogError("Countdown Text is not assigned. Please assign it in the Inspector.");
+            return;
+        }
         StartCoroutine(TimerRoutine());
     }
     IEnumerator TimerRoutine()
     {
-        while(timerControl&& CountdownManager.Instance.processFinishedControl)
+        while(timerControl && CountdownManager.Instance != null && CountdownManager.Instance.processFinishedControl)
         {
+            Debug.Log("girdi");
             yield return new WaitForSeconds(1f);
 
             
@@ -25,7 +33,13 @@ public class TimerManager : Singeleton<TimerManager>
             {
                 timerControl = false;
             }
-            timeRemaining --;
+            else
+            {
+                Debug.Log("girdi" + timeRemaining);
+                timeRemaining --;
+                countdownText.text = timeRemaining.ToString();
+            }
+            
         }
     }
     
