@@ -999,6 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a08c5b53c5265be4c8f8263ebaf36870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 40
   countdownText: {fileID: 1252530720}
 --- !u!4 &1244659948
 Transform:

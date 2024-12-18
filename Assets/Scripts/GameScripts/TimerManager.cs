@@ -19,14 +19,13 @@ public class TimerManager : Singeleton<TimerManager>
             Debug.LogError("Countdown Text is not assigned. Please assign it in the Inspector.");
             return;
         }
-        StartCoroutine(TimerRoutine());
+        
     }
     IEnumerator TimerRoutine()
     {
-        while(timerControl && CountdownManager.Instance != null && CountdownManager.Instance.processFinishedControl)
+        while(timerControl)
         {
             Debug.Log("girdi");
-            yield return new WaitForSeconds(1f);
 
             
             if (timeRemaining <= 0)
@@ -39,8 +38,15 @@ public class TimerManager : Singeleton<TimerManager>
                 timeRemaining --;
                 countdownText.text = timeRemaining.ToString();
             }
+            yield return new WaitForSeconds(1f);
             
         }
     }
+    public void StartTimer()=> StartCoroutine(TimerRoutine());
     
+    //private void Update()
+    //{
+    //    Debug.Log(timerControl + "timer control");
+    //}
+
 }
