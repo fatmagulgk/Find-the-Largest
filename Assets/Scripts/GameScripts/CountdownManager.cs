@@ -33,6 +33,7 @@ public class CountdownManager : Singeleton<CountdownManager>
             count--;
         }
         processFinishedControl = true;
+        UIManager.Instance.ImageControl(processFinishedControl);
         TimerManager.Instance.StartTimer();
         StopCoroutine();
     }

@@ -34,9 +34,9 @@ public class TimerManager : Singeleton<TimerManager>
             }
             else
             {
-                Debug.Log("girdi" + timeRemaining);
-                timeRemaining --;
+                //Debug.Log("girdi" + timeRemaining);
                 countdownText.text = timeRemaining.ToString();
+                timeRemaining --;
             }
             yield return new WaitForSeconds(1f);
             

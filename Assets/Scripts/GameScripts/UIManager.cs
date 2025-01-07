@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UIManager : Singeleton<UIManager>
 {
     [SerializeField] private GameObject TimeAndScorePanel;
-    [SerializeField] private GameObject CompareAndCollectPointsImage;
+    [SerializeField] public GameObject CompareAndCollectPointsImage;
     [SerializeField] private GameObject TopRectangle,BottomRectangle;
 
     private void Start()
@@ -23,6 +23,11 @@ public class UIManager : Singeleton<UIManager>
 
         TopRectangle.GetComponent<RectTransform>().DOLocalMoveX(0,1f).SetEase(Ease.OutBack);
         BottomRectangle.GetComponent<RectTransform>().DOLocalMoveX(0, 1f).SetEase(Ease.OutBack);
+      
+    }
+    public void ImageControl(bool processControl)
+    {
+        CompareAndCollectPointsImage.GetComponent<CanvasGroup>().DOFade(0, 1f);
     }
     
 }
