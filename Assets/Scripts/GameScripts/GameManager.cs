@@ -9,11 +9,13 @@ public class GameManager : Singeleton<GameManager>
     string[] difficultyScale = { "Easy", "Medium", "Hard", "Challenging", "Legendary" };
     //difficultyScale dizisini enuma cevrilecek
     //diffuculty rastgele olmasýn game sahnesinde secilir olsun.
+    //3-2-1 sayacý bitmeden texte yazdýrýlýyor onu düzeltmem gerek.
 
     public void StartGame()
     {
-        DiffucultyLevelSelection();
+        
         RandomTextSelection();
+        
     
     }
     public int RandomTextSelection()
@@ -21,12 +23,10 @@ public class GameManager : Singeleton<GameManager>
         int randomText = Random.Range(0,2);
         return randomText;
     }
-    public void DiffucultyLevelSelection()
-    {
-        NumberProductionRange(difficultyScale[Random.Range(0,difficultyScale.Length)]);
-    }
+    
     public void NumberGeneration(int minValue,int maxValue)
     {
+        
         int firstNumber, secondNumber;
         firstNumber = Random.Range(minValue,maxValue+1);
 
@@ -38,31 +38,7 @@ public class GameManager : Singeleton<GameManager>
         WhichOnIsBig(firstNumber, secondNumber);
 
     }
-    public void NumberProductionRange(string difficulty)
-    {
-        Debug.Log(difficulty);
-        switch (difficulty)
-        {
-            case "Easy":
-                NumberGeneration(0, 100);
-                break;
-            case "Medium":
-                NumberGeneration(100, 500);
-                break;
-            case "Hard":
-                NumberGeneration(500, 1000);
-                break;
-            case "Challenging":
-                NumberGeneration(1000,5000);
-                break;
-            case "Legendary":
-                NumberGeneration(5000, 10000);
-                break;
-            default:
-                Debug.Log("Unknown difficulty. Please select a valid option.");
-                break;
-        }
-    }
+    
     public void PrintToText(int firstNumber , int secondNumber)
     {
         if ( RandomTextSelection() == 0)
