@@ -12,6 +12,8 @@ public class DifficultyController : PersistentSingleton<DifficultyController>
     [SerializeField] private Button btnChallenging;
     [SerializeField] private Button btnLegendary;
     [SerializeField] private GameObject pnlDiffuculty;
+
+    public Difficulty _df;
     private void Start()
     {
         ButtonController();
@@ -31,11 +33,11 @@ public class DifficultyController : PersistentSingleton<DifficultyController>
     }
     public void ButtonSendingText()
     {
-        btnEasy.GetComponent<Button>().onClick.AddListener(()=> NumberProductionRange("Easy"));
-        btnMedium.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange("Medium"));
-        btnHard.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange("Hard"));
-        btnChallenging.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange("Challenging"));
-        btnLegendary.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange("Legendary"));
+        btnEasy.GetComponent<Button>().onClick.AddListener(()=> NumberProductionRange(Difficulty.Easy));
+        btnMedium.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange(Difficulty.Medium));
+        btnHard.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange(Difficulty.Hard));
+        btnChallenging.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange(Difficulty.Challenging));
+        btnLegendary.GetComponent<Button>().onClick.AddListener(() => NumberProductionRange(Difficulty.Legendary));
         Debug.Log("Butona týklandý");
         
     }
@@ -52,29 +54,29 @@ public class DifficultyController : PersistentSingleton<DifficultyController>
         Debug.Log("kapandý");
         pnlDiffuculty.SetActive(false);
     }
-    public void NumberProductionRange(string difficulty)
+    public void NumberProductionRange(Difficulty difficulty)
     {
         Debug.Log(difficulty);
 
         switch (difficulty)
         {
-            case "Easy":
+            case Difficulty.Easy:
                 GameManager.Instance.NumberGeneration(0, 100);
                 UIManager.Instance.UiActiveControl();
                 break;
-            case "Medium":
+            case Difficulty.Medium:
                 GameManager.Instance.NumberGeneration(100, 500);
                 UIManager.Instance.UiActiveControl();
                 break;
-            case "Hard":
+            case Difficulty.Hard:
                 GameManager.Instance.NumberGeneration(500, 1000);
                 UIManager.Instance.UiActiveControl();
                 break;
-            case "Challenging":
+            case Difficulty.Challenging:
                 GameManager.Instance.NumberGeneration(1000, 5000);
                 UIManager.Instance.UiActiveControl();
                 break;
-            case "Legendary":
+            case Difficulty.Legendary:
                 GameManager.Instance.NumberGeneration(5000, 10000);
                 UIManager.Instance.UiActiveControl();
                 break;
@@ -84,4 +86,13 @@ public class DifficultyController : PersistentSingleton<DifficultyController>
         }
         
     }
+}
+public enum Difficulty
+{
+    Easy,
+    Medium,
+    Hard,
+    Challenging,
+    Legendary,
+
 }

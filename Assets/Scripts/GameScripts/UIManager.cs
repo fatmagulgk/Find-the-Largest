@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 
 public class UIManager : Singeleton<UIManager>
@@ -10,8 +12,11 @@ public class UIManager : Singeleton<UIManager>
     [SerializeField] private GameObject TimeAndScorePanel;
     [SerializeField] public GameObject CompareAndCollectPointsImage;
     [SerializeField] private GameObject TopRectangle,BottomRectangle;
-    
-   
+    [SerializeField] public Text TopText;
+    [SerializeField] public Text BottomText;
+    [SerializeField] public GameObject pnlCountdown;
+
+
     public void UpdateTheStageScreen()
     {
         
@@ -29,6 +34,7 @@ public class UIManager : Singeleton<UIManager>
         CountdownManager.Instance.CountdownObject.SetActive(true);
         TopRectangle.SetActive(true);
         BottomRectangle.SetActive(true);
+        pnlCountdown.SetActive(true);
         CompareAndCollectPointsImage.SetActive(true);
         UpdateTheStageScreen();
         CountdownManager.Instance.StartCountDown();
@@ -36,6 +42,9 @@ public class UIManager : Singeleton<UIManager>
     public void ImageControl(bool processControl)
     {
         CompareAndCollectPointsImage.GetComponent<CanvasGroup>().DOFade(0, 1f);
+        pnlCountdown.SetActive(false);
     }
-    
+
+   
+
 }
