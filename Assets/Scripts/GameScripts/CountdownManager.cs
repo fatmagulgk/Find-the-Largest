@@ -43,6 +43,8 @@ public class CountdownManager : Singeleton<CountdownManager>
         {
             StopCoroutine(ietempCoroutine);
             GameManager.Instance.StartGame();
+            UIManager.Instance.pnlCountdown.SetActive(false);
+            CountdownObject.SetActive(false);
         }
     }
     protected override void Awake()

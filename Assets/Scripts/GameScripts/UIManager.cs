@@ -31,6 +31,7 @@ public class UIManager : Singeleton<UIManager>
     {
         
         TimeAndScorePanel.SetActive(true);
+        pnlCountdown.SetActive(true);
         CountdownManager.Instance.CountdownObject.SetActive(true);
         TopRectangle.SetActive(true);
         BottomRectangle.SetActive(true);      
@@ -40,7 +41,6 @@ public class UIManager : Singeleton<UIManager>
     }
     public void ImageControl(bool processControl)
     {
-        CompareAndCollectPointsImage.GetComponent<CanvasGroup>().DOFade(0, 1f);
-        
+        CompareAndCollectPointsImage.GetComponent<CanvasGroup>().DOFade(0, 1f);     
     }
 }
