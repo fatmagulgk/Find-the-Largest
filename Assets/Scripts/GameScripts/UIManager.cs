@@ -15,6 +15,7 @@ public class UIManager : Singeleton<UIManager>
     [SerializeField] public Text TopText;
     [SerializeField] public Text BottomText;
     [SerializeField] public GameObject pnlCountdown;
+    [SerializeField] public Text scoreText;
 
 
     public void UpdateTheStageScreen()
@@ -31,10 +32,10 @@ public class UIManager : Singeleton<UIManager>
     {
         
         TimeAndScorePanel.SetActive(true);
-        pnlCountdown.SetActive(true);
         CountdownManager.Instance.CountdownObject.SetActive(true);
+        pnlCountdown.SetActive(true);
         TopRectangle.SetActive(true);
-        BottomRectangle.SetActive(true);      
+        BottomRectangle.SetActive(true);
         CompareAndCollectPointsImage.SetActive(true);
         UpdateTheStageScreen();
         CountdownManager.Instance.StartCountDown();

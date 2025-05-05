@@ -9,6 +9,9 @@ public class GameManager : Singeleton<GameManager>
     
     int firstNumber;
     int secondNumber;
+    string firstProcess;
+    string secondProcess;
+    public string rightQuestion;
     //difficultyScale dizisini enuma cevrilecek
     //diffuculty rastgele olmasýn game sahnesinde secilir olsun.
     //3-2-1 sayacý bitmeden texte yazdýrýlýyor onu düzeltmem gerek.
@@ -17,10 +20,10 @@ public class GameManager : Singeleton<GameManager>
     public void StartGame()
     {      
         RandomTextSelection();
+        firstProcess = GenerateExpression(firstNumber);
+        secondProcess = GenerateExpression(secondNumber);
         WhichOnIsBig(firstNumber, secondNumber);
-        string firstProcess = GenerateExpression(firstNumber);
-        string secondProcess = GenerateExpression(secondNumber);
-        PrintToText(firstProcess, secondProcess);
+        PrintToText();
     }
     public int RandomTextSelection()
     {
@@ -78,7 +81,7 @@ public class GameManager : Singeleton<GameManager>
         }
     }
 
-    public void PrintToText(string firstProcess , string secondProcess)
+    public void PrintToText()
     {
         if ( RandomTextSelection() == 0)
         {
@@ -93,9 +96,18 @@ public class GameManager : Singeleton<GameManager>
     public void WhichOnIsBig(int firstNumber,int secondNumber)
     {
         if (firstNumber > secondNumber)
+        {
+
             Debug.Log("fistNumber is big" + firstNumber + ">" + secondNumber);
+            Debug.Log("Buraya girdi ve first processin içinde þu yazýyor " + firstProcess);
+            rightQuestion = firstProcess;
+        }
         else
+        {
             Debug.Log("secondNumber is big" + secondNumber + ">" + firstNumber);
+            Debug.Log("Buraya girdi ve first processin içinde þu yazýyor " + secondProcess);
+            rightQuestion = secondProcess;
+        }
     }
     
 }
