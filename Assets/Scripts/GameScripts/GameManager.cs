@@ -12,14 +12,22 @@ public class GameManager : Singeleton<GameManager>
     string firstProcess;
     string secondProcess;
     public string rightQuestion;
+    public int minValue;
+    public int maxValue;
     //difficultyScale dizisini enuma cevrilecek
     //diffuculty rastgele olmasýn game sahnesinde secilir olsun.
     //3-2-1 sayacý bitmeden texte yazdýrýlýyor onu düzeltmem gerek.
     
    
     public void StartGame()
-    {      
-        RandomTextSelection();
+    {
+        
+        GenerateNewQuestion();
+
+    }
+    public void GenerateNewQuestion()
+    {
+        NumberGeneration();
         firstProcess = GenerateExpression(firstNumber);
         secondProcess = GenerateExpression(secondNumber);
         WhichOnIsBig(firstNumber, secondNumber);
@@ -30,8 +38,13 @@ public class GameManager : Singeleton<GameManager>
         int randomText = Random.Range(0,2);
         return randomText;
     }
+    public void MinMaxNumberHolder(int minN,int maxN)
+    {
+        minValue = minN;
+        maxValue = maxN;
+    }
     
-    public void NumberGeneration(int minValue,int maxValue)
+    public void NumberGeneration()
     {
 
         

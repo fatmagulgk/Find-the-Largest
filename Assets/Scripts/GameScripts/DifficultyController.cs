@@ -61,23 +61,23 @@ public class DifficultyController : PersistentSingleton<DifficultyController>
         switch (difficulty)
         {
             case Difficulty.Easy:
-                GameManager.Instance.NumberGeneration(0, 100);
+                GameManager.Instance.MinMaxNumberHolder(0, 100);
                 UIManager.Instance.UiActiveControl();
                 break;
             case Difficulty.Medium:
-                GameManager.Instance.NumberGeneration(100, 500);
+                GameManager.Instance.MinMaxNumberHolder(100, 500);
                 UIManager.Instance.UiActiveControl();
                 break;
             case Difficulty.Hard:
-                GameManager.Instance.NumberGeneration(500, 1000);
+                GameManager.Instance.MinMaxNumberHolder(500, 1000);
                 UIManager.Instance.UiActiveControl();
                 break;
             case Difficulty.Challenging:
-                GameManager.Instance.NumberGeneration(1000, 5000);
+                GameManager.Instance.MinMaxNumberHolder(1000, 5000);
                 UIManager.Instance.UiActiveControl();
                 break;
             case Difficulty.Legendary:
-                GameManager.Instance.NumberGeneration(5000, 10000);
+                GameManager.Instance.MinMaxNumberHolder(5000, 10000);
                 UIManager.Instance.UiActiveControl();
                 break;
             default:
